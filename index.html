@@ -6,11 +6,17 @@
 <body>
 	<div class="container">
 		<form method="post" action="https://script.google.com/macros/s/AKfycbwWHh7hyJF-Xlkzn84otOEn8hsHin8tuLqu_twgQAyBgUq-PKXKB2kq6bAUb_6tbL5K/exec" name="contact-form">
-			<h4>Contact Us</h4>
-			<input type="text" name="your-name" placeholder="Name">
-			<input type="text" name="your-number" placeholder="Number">
-			<input type="email" name="your-email" placeholder="Email">
-			<textarea name="message" rows="7" placeholder="Your Message"></textarea>
+			<h4>Expense Collector</h4>
+			<input type="number" name="amount" placeholder="Amount">
+			<input type="purpose" name="purpose" placeholder="Purpose">
+			<!-- <input type="email" name="your-email" placeholder="Email"> -->
+			<select id="cars" name="card">
+				<option value="Flipkart Axis Bank CC">Flipkart Axis Bank CC</option>
+				<option value="Icici petrol card">Icici petrol card</option>
+				<!-- <option value="mercedes">Mercedes</option>
+				<option value="audi">Audi</option> -->
+			  </select>
+			<textarea name="comments" rows="7" placeholder="Your Comments"></textarea>
 			<input type="submit" value="Submit" id="submit">
 		</form>
 	</div>
