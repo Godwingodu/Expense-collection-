@@ -14,6 +14,15 @@
 
 	<form method="post" action="https://script.google.com/macros/s/AKfycbwWHh7hyJF-Xlkzn84otOEn8hsHin8tuLqu_twgQAyBgUq-PKXKB2kq6bAUb_6tbL5K/exec" name="contact-form">
 		<h4 style="color: rgb(10, 9, 9);">Expense Collector</h4>
+
+
+
+		<label for="meeting-time">Choose a date:</label>
+		<input type="date" id="meeting-time" name="date" required>
+
+
+
+
 		<label for="name">Amount:</label>
 
 		<input type="number"  name="amount" placeholder="Amount" required >
@@ -23,11 +32,30 @@
 		<!-- <input type="email" name="your-email" placeholder="Email"> -->
 		<label for="name">Card:</label>
 
+
+
 		<select id="cars" name="card" required >
 			<option value="Flipkart Axis Bank CC">Flipkart Axis Bank CC</option>
 			<option value="Icici petrol card">Icici petrol card</option>
 
 		  </select>
+
+
+		  <label for="imageUpload">Choose an image:</label>
+		  <input type="file" id="imageUpload" name="image" accept="image/*" capture="environment">
+
+
+
+		  <!-- <label for="imageUpload">Choose an image:</label>
+		  <label class="custom-file-upload" for="imageUpload">Browse</label>
+		  <input type="file" id="imageUpload" name="image" accept="image/*" capture="environment">
+		  <input type="submit" value="Upload"> -->
+
+
+
+
+
+
 		  <label for="name">Comment:</label>
 
 		<textarea name="comments" rows="7" placeholder="Your Comments" required ></textarea>
