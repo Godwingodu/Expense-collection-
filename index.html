@@ -1,35 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
 	<link rel="stylesheet" href="Google Sheet.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
 </head>
 <body>
-	<div class="container">
-		<form method="post" action="https://script.google.com/macros/s/AKfycbwWHh7hyJF-Xlkzn84otOEn8hsHin8tuLqu_twgQAyBgUq-PKXKB2kq6bAUb_6tbL5K/exec" name="contact-form">
-			<h4 style="color: white;">Expense Collector</h4>
-			<input type="number" name="amount" placeholder="Amount" required >
-			<input type="purpose" name="purpose" placeholder="Purpose" required>
-			<!-- <input type="email" name="your-email" placeholder="Email"> -->
-			<select id="cars" name="card" required>
-				<option value="Flipkart Axis Bank CC">Flipkart Axis Bank CC</option>
-				<option value="Icici petrol card">Icici petrol card</option>
-				<!-- <option value="mercedes">Mercedes</option>
-				<option value="audi">Audi</option> -->
-			  </select>
-			<textarea name="comments" rows="7" placeholder="Your Comments" required ></textarea>
-			<input type="submit" value="Submit" id="submit">
-		</form>
-	</div>
 
+
+
+
+	<form method="post" action="https://script.google.com/macros/s/AKfycbwWHh7hyJF-Xlkzn84otOEn8hsHin8tuLqu_twgQAyBgUq-PKXKB2kq6bAUb_6tbL5K/exec" name="contact-form">
+		<h4 style="color: white;">Expense Collector</h4>
+		<label for="name">Amount:</label>
+
+		<input type="number"  name="amount" placeholder="Amount" required >
+		<label for="name">Purpose:</label>
+
+		<input type="purpose" name="purpose" placeholder="Purpose" required>
+		<!-- <input type="email" name="your-email" placeholder="Email"> -->
+		<label for="name">Card:</label>
+
+		<select id="cars" name="card" required >
+			<option value="Flipkart Axis Bank CC">Flipkart Axis Bank CC</option>
+			<option value="Icici petrol card">Icici petrol card</option>
+
+		  </select>
+		  <label for="name">Comment:</label>
+
+		<textarea name="comments" rows="7" placeholder="Your Comments" required ></textarea>
+		<input type="submit" value="Submit" id="submit">
+	</form>
 	<script src="GoogleSheet.js">
 		console.log("hi")
 	</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
 </body>
 </html>
-
-
-
