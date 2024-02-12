@@ -16,23 +16,14 @@ form.addEventListener('submit', e => {
 
 
 
-function openGallery() {
-  // Create a hidden file input element
-  var input = document.createElement('input');
-  input.type = 'file';
-  input.accept = 'image/*';
-  input.capture = '';
-  input.style.display = 'none';
+ // Get the current date
+ var currentDate = new Date();
 
-  // Attach an event listener to handle file selection from the gallery
-  input.addEventListener('change', function () {
-    // Access the selected file from the gallery
-    var selectedFile = input.files[0];
+ // Format the date as YYYY-MM-DD
+ var year = currentDate.getFullYear();
+ var month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+ var day = currentDate.getDate().toString().padStart(2, '0');
+ var formattedDate = year + '-' + month + '-' + day;
 
-    // Handle the selected file as needed (e.g., upload or display)
-    console.log('Selected file from gallery:', selectedFile);
-  });
-
-  // Trigger the file input element to open the gallery
-  input.click();
-}
+ // Set the input field value to the current date
+ document.getElementById('meeting-time').value = formattedDate;
