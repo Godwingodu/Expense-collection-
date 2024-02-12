@@ -1,24 +1,47 @@
-const scriptURL = 'https://script.google.com/macros/s/AKfycbwWHh7hyJF-Xlkzn84otOEn8hsHin8tuLqu_twgQAyBgUq-PKXKB2kq6bAUb_6tbL5K/exec'
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwWHh7hyJF-Xlkzn84otOEn8hsHin8tuLqu_twgQAyBgUq-PKXKB2kq6bAUb_6tbL5K/exec';
 
-const form = document.forms['contact-form']
+const form = document.forms['contact-form'];
 
 form.addEventListener('submit', e => {
-  console.log("submitted")
-  e.preventDefault()
-  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-  .then(response => alert("Thank you! your form is submitted successfully." ))
-  .then(() => { window.location.reload(); })
-  .catch(error => console.error('Error!', error.message))
-})
+  e.preventDefault();
+
+  // Display loading message
+  const loadingMessage = document.getElementById('loading-message');
+  if (loadingMessage) {
+    loadingMessage.textContent = 'Submitting...';
+  }
+
+  fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+    .then(response => {
+      // Update loading message
+      if (loadingMessage) {
+        loadingMessage.textContent = 'Thank you! Your form is submitted successfully.';
+      }
+      // Add any further handling if needed
+    })
+    .catch(error => {
+      // Handle errors
+      console.error('Error!', error.message);
+      // Update loading message on error
+      if (loadingMessage) {
+        loadingMessage.textContent = 'Error submitting the form. Please try again.';
+      }
+    })
+    .finally(() => {
+      // Optional: Reload the page after a delay (e.g., 2 seconds)
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+    });
+});
 
 
 
 
 
 
- // Get the current date
+//  <-------------------------- Get the current date---------------------->
  var currentDate = new Date();
-
  // Format the date as YYYY-MM-DD
  var year = currentDate.getFullYear();
  var month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
