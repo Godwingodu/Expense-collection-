@@ -12,7 +12,7 @@
 
 
 
-	<form method="post" action="https://script.google.com/macros/s/AKfycbwoA-PCJukqE9xypivibLT7yBUMXDNiT-URUn9ana8/dev" name="contact-form">
+	<form method="post" action="https://script.google.com/macros/s/AKfycbwWHh7hyJF-Xlkzn84otOEn8hsHin8tuLqu_twgQAyBgUq-PKXKB2kq6bAUb_6tbL5K/exec" name="contact-form">
 		<h4 style="color: rgb(10, 9, 9);">Expense Collector</h4>
 
 
@@ -60,7 +60,9 @@
 		  <input type="submit" value="Upload"> -->
 
 
+		  <a onclick="getLocation()">Get Location</a>
 
+		  <p id="demo"></p>
 
 
 
@@ -78,5 +80,62 @@
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
+
+
+	<script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                document.getElementById("demo").innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+
+            // Using Google Maps Geocoding API
+            var geocodingApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=YOUR_GOOGLE_MAPS_API_KEY`;
+
+            // Make a request to the Geocoding API
+            fetch(geocodingApiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === "OK" && data.results.length > 0) {
+                        var address = data.results[0].formatted_address;
+                        document.getElementById("demo").innerHTML = "Location: " + address;
+                    } else {
+                        document.getElementById("demo").innerHTML = "Could not determine location.";
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching location data:", error);
+                    document.getElementById("demo").innerHTML = "Error fetching location data.";
+                });
+        }
+
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    document.getElementById("demo").innerHTML = "User denied the request for Geolocation.";
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    document.getElementById("demo").innerHTML = "Location information is unavailable.";
+                    break;
+                case error.TIMEOUT:
+                    document.getElementById("demo").innerHTML = "The request to get user location timed out.";
+                    break;
+                case error.UNKNOWN_ERROR:
+                    document.getElementById("demo").innerHTML = "An unknown error occurred.";
+                    break;
+            }
+        }
+    </script>
+
+
+
 </body>
 </html>
