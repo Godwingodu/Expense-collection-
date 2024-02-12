@@ -10,3 +10,29 @@ form.addEventListener('submit', e => {
   .then(() => { window.location.reload(); })
   .catch(error => console.error('Error!', error.message))
 })
+
+
+
+
+
+
+function openGallery() {
+  // Create a hidden file input element
+  var input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'image/*';
+  input.capture = '';
+  input.style.display = 'none';
+
+  // Attach an event listener to handle file selection from the gallery
+  input.addEventListener('change', function () {
+    // Access the selected file from the gallery
+    var selectedFile = input.files[0];
+
+    // Handle the selected file as needed (e.g., upload or display)
+    console.log('Selected file from gallery:', selectedFile);
+  });
+
+  // Trigger the file input element to open the gallery
+  input.click();
+}
