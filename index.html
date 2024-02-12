@@ -60,15 +60,18 @@
 		  <input type="submit" value="Upload"> -->
 
 
-		  <a onclick="getLocation()">Get Location</a>
 
-		  <p id="demo"></p>
 
 
 
 		  <label for="name">Comment:</label>
 
 		<textarea name="comments" rows="3" placeholder="Your Comments" ></textarea>
+
+		<a onclick="getLocation()" class="mt-2 p-2 custom-link">Get Location</a>
+
+		<input class="mt-2 mb-2" type="text" name="location" placeholder="location" value="" id="demo">
+
 		<input type="submit" value="Submit" id="submit">
 
 	</form>
@@ -84,57 +87,60 @@
 
 
 
+
 	<script>
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition, showError);
-            } else {
-                document.getElementById("demo").innerHTML = "Geolocation is not supported by this browser.";
-            }
-        }
-
-        function showPosition(position) {
-            var latitude = position.coords.latitude;
-            var longitude = position.coords.longitude;
-
-            // Using Google Maps Geocoding API
-            var geocodingApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=YOUR_GOOGLE_MAPS_API_KEY`;
-
-            // Make a request to the Geocoding API
-            fetch(geocodingApiUrl)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === "OK" && data.results.length > 0) {
-                        var address = data.results[0].formatted_address;
-                        document.getElementById("demo").innerHTML = "Location: " + address;
-                    } else {
-                        document.getElementById("demo").innerHTML = "Could not determine location.";
-                    }
-                })
-                .catch(error => {
-                    console.error("Error fetching location data:", error);
-                    document.getElementById("demo").innerHTML = "Error fetching location data.";
-                });
-        }
-
-        function showError(error) {
-            switch (error.code) {
-                case error.PERMISSION_DENIED:
-                    document.getElementById("demo").innerHTML = "User denied the request for Geolocation.";
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    document.getElementById("demo").innerHTML = "Location information is unavailable.";
-                    break;
-                case error.TIMEOUT:
-                    document.getElementById("demo").innerHTML = "The request to get user location timed out.";
-                    break;
-                case error.UNKNOWN_ERROR:
-                    document.getElementById("demo").innerHTML = "An unknown error occurred.";
-                    break;
-            }
-        }
-    </script>
-
+		function getLocation() {
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(showPosition, showError);
+			} else {
+				document.getElementById("demo").value = "Geolocation is not supported by this browser.";
+			}
+		}
+	
+		function showPosition(position) {
+			var latitude = position.coords.latitude;
+			var longitude = position.coords.longitude;
+	
+			// Using OpenStreetMap Nominatim API
+			var nominatimApiUrl = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`;
+	
+			// Make a request to the Nominatim API
+			fetch(nominatimApiUrl)
+				.then(response => response.json())
+				.then(data => {
+					if (data.display_name) {
+						var address = data.display_name;
+						document.getElementById("demo").value = address;
+					} else {
+						document.getElementById("demo").value = "Could not determine location.";
+					}
+				})
+				.catch(error => {
+					console.error("Error fetching location data:", error);
+					document.getElementById("demo").value = "Error fetching location data.";
+				});
+		}
+	
+		function showError(error) {
+			switch (error.code) {
+				case error.PERMISSION_DENIED:
+					document.getElementById("demo").value = "User denied the request for Geolocation.";
+					break;
+				case error.POSITION_UNAVAILABLE:
+					document.getElementById("demo").value = "Location information is unavailable.";
+					break;
+				case error.TIMEOUT:
+					document.getElementById("demo").value = "The request to get user location timed out.";
+					break;
+				case error.UNKNOWN_ERROR:
+					document.getElementById("demo").value = "An unknown error occurred.";
+					break;
+			}
+		}
+	
+		// Call the getLocation function to initiate the geolocation process
+		getLocation();
+	</script>
 
 
 </body>

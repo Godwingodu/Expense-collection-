@@ -48,3 +48,16 @@ button:hover,#submit:hover {
     margin-bottom: 10px;
 }
 
+  .custom-link {
+    text-decoration: none; /* Disable underline */
+    color: aliceblue;
+    background-color: rgb(18, 101, 61);
+    padding: 8px 16px;
+    display: inline-block;
+    border-radius: 7px;
+  }
+
+  .custom-link:active {
+    /* Style when link is clicked */
+    background-color: darkviolet;
+  }
