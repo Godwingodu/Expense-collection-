@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser Notification Example</title>
+</head>
+<body>
+
+<button onclick="showNotification()">Show Notification</button>
+
+<script>
+    function showNotification() {
+        console.log('started')
+        // Check if the browser supports notifications
+        if ('Notification' in window) {
+            // Request permission to show notifications
+            Notification.requestPermission().then(function (permission) {
+                if (permission === 'granted') {
+                    // Create and show the notification
+                    var notification = new Notification('Hello, World!', {
+                        body: 'This is a sample notification.',
+                        icon: 'path/to/icon.png' // Optional: You can provide an icon for the notification
+                    });
+
+                    // Optional: Handle click events on the notification
+                    notification.onclick = function () {
+                        alert('Notification clicked!');
+                    };
+                } else {
+                    console.warn('Notification permission denied');
+                }
+            });
+        } else {
+            console.warn('Browser does not support notifications');
+        }
+    }
+</script>
+
+</body>
+</html>
