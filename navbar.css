@@ -154,3 +154,12 @@ body {
 .navigation ul li:nth-child(5).active~.indicator {
     transform: translateX(calc(70px * 4));
 }
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f9fa; /* Set your desired background color */
+    padding-top: 10px; /* Adjust padding as needed */
+}

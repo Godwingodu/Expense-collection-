@@ -58,8 +58,27 @@ button:hover,#submit:hover {
   }
 
   .custom-link:active {
+    /* Style when link is clicked */
     background-color: darkviolet;
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
