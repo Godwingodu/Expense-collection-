@@ -55,44 +55,6 @@ form.addEventListener('submit', async e => {
 
 
 
-// const scriptURL = 'https://script.google.com/macros/s/AKfycbwWHh7hyJF-Xlkzn84otOEn8hsHin8tuLqu_twgQAyBgUq-PKXKB2kq6bAUb_6tbL5K/exec';
-
-// const form = document.forms['contact-form'];
-
-// form.addEventListener('submit', e => {
-//   e.preventDefault();
-
-//   // Display loading message
-//   const loadingMessage = document.getElementById('loading-message');
-//   if (loadingMessage) {
-//     loadingMessage.textContent = 'Submitting...';
-//   }
-
-//   fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-//     .then(response => {
-//       // Update loading message
-//       if (loadingMessage) {
-//         loadingMessage.textContent = 'Thank you! Your form is submitted successfully.';
-//       }
-//       // Add any further handling if needed
-//     })
-//     .catch(error => {
-//       // Handle errors
-//       console.error('Error!', error.message);
-//       // Update loading message on error
-//       if (loadingMessage) {
-//         loadingMessage.textContent = 'Error submitting the form. Please try again.';
-//       }
-//     })
-//     .finally(() => {
-//       // Optional: Reload the page after a delay (e.g., 2 seconds)
-//       setTimeout(() => {
-//         window.location.reload();
-//       }, 2000);
-//     });
-// });
-
-
 
 
 
@@ -140,3 +102,21 @@ document.getElementById('meeting-datetime').value = formattedDateTime;
 //     console.log("I was closed by the timer");
 //   }
 // });
+
+
+
+
+
+
+
+//  <-------------------------- Navbar ---------------------->
+const list = document.querySelectorAll('.list');
+
+function activeLink() {
+    list.forEach((item) =>
+        item.classList.remove('active'));
+    this.classList.add('active');
+}
+
+list.forEach((item) =>
+    item.addEventListener('click', activeLink));
