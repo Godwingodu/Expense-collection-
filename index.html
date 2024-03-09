@@ -4,6 +4,31 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Expense Saver Form</title>
+	<style>
+        .row {
+            display: flex;
+            align-items: center;
+        }
+
+        label {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+		.col {
+			background-color: rgb(116, 98, 98);
+			border: 3px solid rgb(190, 178, 178) ;
+			color: aliceblue;
+			padding-top: 3px;
+		}
+		.hidden {
+            display: none;
+        }
+    </style>
 	<link rel="stylesheet" href="style.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -26,11 +51,40 @@
 		<input type="number" name="amount" placeholder="Amount" required>
 		<label for="name">Purpose:</label>
 		<input type="purpose" name="purpose" placeholder="Purpose" required>
-		<label for="name">Card:</label>
-		<select id="cars" name="card" required>
-			<option value="Flipkart Axis Bank CC">Flipkart Axis Bank CC</option>
-			<option value="Icici petrol card">Icici petrol card</option>
+		<label for="name">Payment Type:</label>
+
+		<div class="row">
+			<div class="col">
+				<label>
+					<input type="radio" name="payment_type" value="Credit Card" style="width: 20%;" onclick="showOptions('credit')">
+					Credit
+				</label>
+			</div>
+			<div class="col">
+				<label>
+					<input type="radio" name="payment_type" value="Debit Card" style="width: 20%;" onclick="showOptions('debit')">
+					Debit
+				</label>
+			</div>
+			<div class="col">
+				<label>
+					<input type="radio" name="payment_type" value="Bank Account" style="width: 20%;" onclick="showOptions('bank')">
+					Bank
+				</label>
+			</div>
+		</div>
+		
+		<label for="name" id="creditLabel" >Select:</label>
+		<select name="card" required>
+			<option id="creditOption1" value="Flipkart Axis Bank CC" class="creditOption">Select</option>
+			<option id="creditOption1" value="Flipkart Axis Bank CC" class="creditOption">Flipkart Axis Bank CC</option>
+			<option id="creditOption2" value="Icici petrol card" class="creditOption">Icici petrol card</option>
+			<option id="debitOption1" value="Flipkart Axis Bank Dc" class="debitOption">Flipkart Axis Dc</option>
+			<option id="debitOption2" value="Icici petrol card" class="debitOption">Icici Bank</option>
+			<option id="bankOption1" value="Flipkart Axis Bank" class="bankOption">Flipkart Axis Bank</option>
+			<option id="bankOption2" value="Icici petrol card" class="bankOption">Icici Bank</option>
 		</select>
+
 		<label for="imageUpload">Upload from gallery:</label>
 		<input type="file" id="imageUpload" name="image">
 		<label for="name">Comment:</label>
@@ -43,9 +97,12 @@
 	<script>
 		window.onload = setDefaultDateTime; /*setting default date and time on page load*/
 		getLocation(); /*getting location on page load*/
-
-
 	</script>
+
+<script>
+
+
+</script>
 </body>
 
 </html>

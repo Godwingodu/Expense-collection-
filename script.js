@@ -130,6 +130,21 @@ getLocation();
 
 
 
+//  <-------------------------- Select corresponding options for payment type ---------------------->
+function showOptions(type) {
+  const allOptions = document.querySelectorAll('.creditOption, .debitOption, .bankOption');
+
+  // Hide all options
+  allOptions.forEach(option => {
+      option.classList.add('hidden');
+  });
+
+  // Show the selected options
+  const selectedOptions = document.querySelectorAll(`.${type}Option`);
+  selectedOptions.forEach(option => {
+      option.classList.remove('hidden');
+  });
+}
 
 
 
