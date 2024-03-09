@@ -98,19 +98,18 @@ form.addEventListener('submit', async e => {
 
 
 //  <-------------------------- Get the current date---------------------->
-var currentDateTime = new Date();
-var year = currentDateTime.getFullYear();
-var month = (currentDateTime.getMonth() + 1).toString().padStart(2, '0');
-var day = currentDateTime.getDate().toString().padStart(2, '0');
-var hours = currentDateTime.getHours().toString().padStart(2, '0');
-var minutes = currentDateTime.getMinutes().toString().padStart(2, '0');
+function setDefaultDateTime() {
+  var currentDateTime = new Date();
+  var year = currentDateTime.getFullYear();
+  var month = (currentDateTime.getMonth() + 1).toString().padStart(2, '0');
+  var day = currentDateTime.getDate().toString().padStart(2, '0');
+  var hours = currentDateTime.getHours().toString().padStart(2, '0');
+  var minutes = currentDateTime.getMinutes().toString().padStart(2, '0');
 
-var formattedDateTime = year + '-' + month + '-' + day + 'T' + hours + ':' + minutes;
+  var formattedDateTime = year + '-' + month + '-' + day + 'T' + hours + ':' + minutes;
 
-document.getElementById('meeting-datetime').value = formattedDateTime;
-
-
-
+  document.getElementById('meeting-datetime').value = formattedDateTime;
+}
 
 
 
