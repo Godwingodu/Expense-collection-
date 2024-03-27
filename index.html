@@ -68,7 +68,7 @@
 
 
 
-		
+
 		<label for="name">Payment Type:</label>
 
 
@@ -142,16 +142,15 @@
 
 		<label for="imageUpload">Upload from gallery:</label>
 		<input type="file" id="imageUpload" name="image">
-		<div id="msg">null</div>
+		<div id="msg"></div>
 		<!-- <label for="name">Comment:</label>
 		<textarea name="comments" rows="2" placeholder="Your Comments"></textarea> -->
 		<a onclick="getLocation()" class="mt-2 p-2 custom-link">Get Location</a>
 		<input class="mt-2 mb-2" type="text" name="location" placeholder="location" value="" id="demo">
 
-
+<!-- 
 		<input type="file" vaccept="image/*">
-		<!-- This is an image element with an empty src and alt attribute -->
-		<img src="" alt="">
+		<img src="" alt=""> -->
 
 		
 
@@ -176,6 +175,7 @@
     let img = document.querySelector("img");
     // This line adds an event listener to the "change" event of the "file" input element
     file.addEventListener('change',()=>{
+		alert("y")
         // This line creates a new FileReader object called "fr"
         let fr = new FileReader();
         // This line adds an event listener to the "loadend" event of the FileReader object
