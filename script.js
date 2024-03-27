@@ -149,22 +149,25 @@ function showOptions(type) {
 
 
 //  <-------------------------- Image Uploader ---------------------->
-var fileUploader = document.getElementById("imageUpload");
-var msg = document.getElementById("msg");
-function uploadFi1es() {
-  msg.innerHTML = "Uploading file... ";
+// var fileUploader = document.getElementById("imageUpload");
+// var msg = document.getElementById("msg");
+// alert("w")
+// function uploadFiles() {
+//   msg.innerHTML = "Uploading file... ";
 
-  var file = fileUploader.files[0];
-  var reader = new FileReader();
-  reader.onload = function () {
-    google.script.run
-      .withSuccessHandler(function () {
-        msg.innerHTML = "Uploaded. ";
-      })
-      .uploadFi1esToGoog1eDrive(reader.result, file.name, file.type);
-  };
-  reader.readAsText(file);
-}
+//   var file = fileUploader.files[0];
+//   var reader = new FileReader();
+  
+//   reader.onload = function (event) {
+//     var imageData = event.target.result;
+//     google.script.run.withSuccessHandler(function () {
+//       msg.innerHTML = "Uploaded. ";
+//     }).uploadImageToGoogleDrive(imageData, file.name);
+//   };
+  
+//   reader.readAsDataURL(file); // Read file as Data URL
+// }
+
 
 
 
