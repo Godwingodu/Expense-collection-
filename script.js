@@ -165,3 +165,38 @@ function uploadFi1es() {
   };
   reader.readAsText(file);
 }
+
+
+
+
+
+
+//  <-------------------------- Split the date and time ---------------------->
+function submitForm(event) {
+  event.preventDefault(); // Prevent form submission
+
+  var dateTimeInput = document.getElementById('meeting-datetime').value;
+  var dateTimeComponents = dateTimeInput.split('T'); // Split date and time
+
+  var date = dateTimeComponents[0];
+  var timeInput = dateTimeComponents[1].substring(0, 5); // Extract time part
+  var hours = parseInt(timeInput.substring(0, 2));
+  var minutes = parseInt(timeInput.substring(3, 5));
+  var ampm = (hours >= 12) ? 'PM' : 'AM'; // Determine AM/PM
+
+  // Convert hours to 12-hour format
+  if (hours > 12) {
+    hours -= 12;
+  } else if (hours === 0) {
+    hours = 12;
+  }
+
+  var timeWithAmPm = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ' ' + ampm; // Combine time and AM/PM
+
+  // Assign date and time with AM/PM to separate inputs
+  document.getElementById('date-input').value = date;
+  document.getElementById('time-ampm-input').value = timeWithAmPm;
+
+  // Submit the form
+  // document.getElementById('myForm').submit(); // Uncomment this line if you want to submit the form automatically
+}
