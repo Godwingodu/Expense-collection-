@@ -51,7 +51,7 @@
 		<input type="hidden" id="time-ampm-input" name="time">
 
 		<label for="name">Amount:</label>
-		<input type="number" name="amount" placeholder="Amount" required>
+		<input type="number" name="amount" placeholder="Amount" required step="any">
 		<label for="name">Purpose:</label>
 		<input type="purpose" name="purpose" placeholder="Purpose" required>
 
@@ -107,16 +107,18 @@
 
 
 			<option class="creditOption">Select</option>
+			<option id="creditOption3" value="Icici Coral CC" class="creditOption">Icici Coral Credit Card (UPI)</option>
 			<option id="creditOption2" value="Flipkart Axis Bank CC" class="creditOption">Flipkart Axis Bank Credit Card</option>
-			<option id="creditOption3" value="Icici Coral CC" class="creditOption">Icici Coral Credit Card</option>
 			<option id="creditOption4" value="Icici Platinum CC" class="creditOption">Icici Platinum Credit Card</option>
-			<option id="creditOption5" value="Axis Bank My Zone CC" class="creditOption">Axis Bank My Zone Credit Card</option>
+			<option id="creditOption5" value="Axis My Zone CC" class="creditOption">Axis Bank My Zone Credit Card</option>
 			<option id="creditOption6" value="Icici Petrol CC" class="creditOption">Icici Petrol Credit Card</option>
-			<option id="creditOption7" value="Icici petrol card" class="creditOption">Icici Petrol Card</option>
-			<option id="creditOption8" value="Sbi petrol card" class="creditOption">SBI Petrol Card</option>
-			<option id="creditOption9" value="Sbi Simply Click card" class="creditOption">SBI Simply Click Card</option>
+			<option id="creditOption8" value="Sbi Bpcl card" class="creditOption">SBI Bpcl Card</option>
+			<option id="creditOption9" value="Sbi Simply Click card" class="creditOption">SBI Simply Click Card (UPI)</option>
 			<option id="creditOption10" value="Hdfc Moneyback Plus CC CC" class="creditOption">HDFC Moneyback Plus Credit Card</option>
 			<option id="creditOption11" value="Kotak League CC" class="creditOption">Kotak League Credit Card</option>
+			<option id="creditOption12" value="Icici Sapphiro CC" class="creditOption">Icici Sapphiro Credit Card</option>
+			<option id="creditOption13" value="Axis Neo CC" class="creditOption">Axis Neo Credit Card (UPI)</option>
+
 
 
 			<option id="debitOption1" value="Flipkart Axis Bank Dc" class="debitOption">Axis Bank Debit Card</option>
@@ -141,16 +143,16 @@
 		</select>
 
 		<label for="imageUpload">Upload from gallery:</label>
-		<input type="file" id="imageUpload" name="image">
+		<!-- <input type="file" id="imageUpload" name="image"> -->
 		<div id="msg"></div>
 		<!-- <label for="name">Comment:</label>
 		<textarea name="comments" rows="2" placeholder="Your Comments"></textarea> -->
 		<a onclick="getLocation()" class="mt-2 p-2 custom-link">Get Location</a>
 		<input class="mt-2 mb-2" type="text" name="location" placeholder="location" value="" id="demo">
 
-<!-- 
+
 		<input type="file" vaccept="image/*">
-		<img src="" alt=""> -->
+		<img src="" alt="">
 
 		
 
