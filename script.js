@@ -2,55 +2,62 @@
 document.addEventListener('DOMContentLoaded', () => {
   const scriptURL = 'https://script.google.com/macros/s/AKfycbwWHh7hyJF-Xlkzn84otOEn8hsHin8tuLqu_twgQAyBgUq-PKXKB2kq6bAUb_6tbL5K/exec';
   const form = document.forms['contact-form'];
+  const dateTimeInput = document.getElementById('meeting-datetime');
+
+  // Retrieve and set the datetime value from localStorage on page load
+  const savedDateTime = localStorage.getItem('meeting-datetime');
+  if (savedDateTime) {
+    dateTimeInput.value = savedDateTime;
+  }
 
   form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+    e.preventDefault();
 
-      // Display SweetAlert2 loading message
-      const swalLoading = Swal.fire({
-          title: 'Submitting...',
-          html: 'Please wait.',
-          showConfirmButton: false,
-          willOpen: () => {
-              Swal.showLoading();
-          },
-      });
+    // Save the current datetime value to localStorage
+    localStorage.setItem('meeting-datetime', dateTimeInput.value);
 
-      try {
-          const response = await fetch(scriptURL, { method: 'POST', body: new FormData(form) });
-          if (!response.ok) {
-              throw new Error('Network response was not ok');
-          }
+    // Show SweetAlert2 loading message
+    const swalLoading = Swal.fire({
+      title: 'Submitting...',
+      html: 'Please wait.',
+      showConfirmButton: false,
+      willOpen: () => {
+        Swal.showLoading();
+      },
+    });
 
-          // Show success message
-          Swal.fire({
-              icon: 'success',
-              title: 'Thank you!',
-              text: 'Your Expense is submitted successfully.',
-              timer: 2000,
-              timerProgressBar: true,
-              showConfirmButton: false,
-          });
-      } catch (error) {
-          // Handle errors
-          console.error('Error!', error.message);
-          // Show error message
-          Swal.fire({
-              icon: 'error',
-              title: 'Error',
-              text: 'Error submitting the form. Please try again.',
-              timer: 2000,
-              timerProgressBar: true,
-              showConfirmButton: false,
-          });
-      } finally {
-          // Close the SweetAlert2 loading message
-          swalLoading.close();
-          // Optional: Reload the page after a delay (e.g., 2 seconds)
-          setTimeout(() => {
-              window.location.reload();
-          }, 1000);
+    try {
+      const response = await fetch(scriptURL, { method: 'POST', body: new FormData(form) });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
       }
+
+      // Show success message
+      Swal.fire({
+        icon: 'success',
+        title: 'Thank you!',
+        text: 'Your Expense is submitted successfully.',
+        timer: 2000,
+        timerProgressBar: true,
+        showConfirmButton: false,
+      });
+    } catch (error) {
+      // Show error message
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Error submitting the form. Please try again.',
+        timer: 2000,
+        timerProgressBar: true,
+        showConfirmButton: false,
+      });
+    } finally {
+      swalLoading.close();
+      // Optional: Reload the page after a delay without clearing localStorage
+      setTimeout(() => {
+        location.reload();
+      }, 1000);
+    }
   });
 });
 
@@ -58,18 +65,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 //  <-------------------------- Get the current date---------------------->
-function setDefaultDateTime() {
-  var currentDateTime = new Date();
-  var year = currentDateTime.getFullYear();
-  var month = (currentDateTime.getMonth() + 1).toString().padStart(2, '0');
-  var day = currentDateTime.getDate().toString().padStart(2, '0');
-  var hours = currentDateTime.getHours().toString().padStart(2, '0');
-  var minutes = currentDateTime.getMinutes().toString().padStart(2, '0');
+// function setDefaultDateTime() {
+//   var currentDateTime = new Date();
+//   var year = currentDateTime.getFullYear();
+//   var month = (currentDateTime.getMonth() + 1).toString().padStart(2, '0');
+//   var day = currentDateTime.getDate().toString().padStart(2, '0');
+//   var hours = currentDateTime.getHours().toString().padStart(2, '0');
+//   var minutes = currentDateTime.getMinutes().toString().padStart(2, '0');
 
-  var formattedDateTime = year + '-' + month + '-' + day + 'T' + hours + ':' + minutes;
+//   var formattedDateTime = year + '-' + month + '-' + day + 'T' + hours + ':' + minutes;
 
-  document.getElementById('meeting-datetime').value = formattedDateTime;
-}
+//   document.getElementById('meeting-datetime').value = formattedDateTime;
+// }
 
 
 
